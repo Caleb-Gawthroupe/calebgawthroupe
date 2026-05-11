@@ -1,373 +1,434 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Caleb Gawthroupe</title>
+    <meta
+      name="description"
+      content="Portfolio of Caleb Gawthroupe — Full-Stack and AI Engineer based in Toronto. Building intelligent web apps, ML systems, and modern mobile experiences."
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Caleb Gawthroupe | Full-Stack & AI Engineer</title>
-  <meta name="description"
-    content="Portfolio of Caleb Gawthroupe — Full-Stack and AI Engineer based in Toronto. Building intelligent web apps, ML systems, and modern mobile experiences." />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet" />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-  <!-- Three.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
-</head>
+  <body>
+    <!-- Background UI Decorations -->
+    <div class="bg-ui">
+      <div class="bg-grid"></div>
+      <div class="glow-orb orb-1"></div>
+      <div class="glow-orb orb-2"></div>
+      <div class="glow-orb orb-3"></div>
 
-<body>
-  <!-- Background UI Decorations -->
-  <div class="bg-ui">
-    <div class="bg-grid"></div>
-    <div class="glow-orb orb-1"></div>
-    <div class="glow-orb orb-2"></div>
-    <div class="glow-orb orb-3"></div>
-    
-    <!-- Tech framing accents -->
-    <div class="ui-accent ui-top-left"></div>
-    <div class="ui-accent ui-top-right"></div>
-    <div class="ui-accent ui-bottom-left"></div>
-    <div class="ui-accent ui-bottom-right"></div>
-  </div>
+      <!-- Tech framing accents -->
+      <div class="ui-accent ui-top-left"></div>
+      <div class="ui-accent ui-top-right"></div>
+      <div class="ui-accent ui-bottom-left"></div>
+      <div class="ui-accent ui-bottom-right"></div>
+    </div>
 
-  <!-- Three.js Canvas -->
-  <canvas id="three-canvas"></canvas>
+    <!-- Three.js Canvas -->
+    <canvas id="three-canvas"></canvas>
 
-  <!-- Content -->
-  <div class="content-wrapper">
+    <!-- Content -->
+    <div class="content-wrapper">
+      <!-- ======================== Navigation ======================== -->
+      <nav class="navbar" id="navbar">
+        <a href="#hero" class="nav-brand">C<span>.</span>G</a>
 
-    <!-- ======================== Navigation ======================== -->
-    <nav class="navbar" id="navbar">
-      <a href="#hero" class="nav-brand">C<span>.</span>G</a>
-
-      <div class="nav-links" id="nav-links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-      </div>
-
-      <div class="nav-social">
-        <a href="https://github.com/Caleb-Gawthroupe" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/caleb-gawthroupe-34589728a/" target="_blank" rel="noopener noreferrer"
-          aria-label="LinkedIn">
-          <i class="fa-brands fa-linkedin-in"></i>
-        </a>
-        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
-          <i class="fa-solid fa-bars"></i>
-        </button>
-      </div>
-    </nav>
-
-    <!-- ======================== Hero ======================== -->
-    <section class="hero" id="hero">
-      <div class="hero-content">
-        <p class="hero-greeting">Hi, I'm</p>
-        <h1 class="hero-name">Caleb Gawthroupe</h1>
-        <p class="hero-title">Full-Stack & AI Engineer</p>
-        <p class="hero-location"><i class="fa-solid fa-location-dot"></i> Toronto, CA</p>
-        <div class="hero-cta">
-          <a href="#projects" class="btn-primary">
-            View Projects <i class="fa-solid fa-arrow-down"></i>
-          </a>
-          <a href="https://drive.google.com/file/d/1KlCr_9cyF6ZVWgNM-7CFlD2-byr-DPgM/view?usp=sharing"
-            target="_blank" rel="noopener noreferrer" class="btn-secondary">
-            Resume <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
-        </div>
-      </div>
-      <div class="scroll-indicator">
-        <span>Scroll</span>
-        <div class="chevron"></div>
-      </div>
-    </section>
-
-    <!-- ======================== About ======================== -->
-    <section id="about">
-      <div class="section-inner">
-        <div class="reveal">
-          <span class="section-label">About</span>
-          <h2 class="section-title">A bit about me.</h2>
+        <div class="nav-links" id="nav-links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
         </div>
 
-        <div class="about-grid">
-          <div class="reveal reveal-delay-1">
-            <p class="about-bio">
-              I am a Full-Stack and AI Engineer based in Toronto, CA.
-              Currently studying computer science at the University of Toronto,
-              I specialize in building robust web applications, modern mobile
-              experiences, and integrating intelligent LLM systems into practical
-              software solutions.
+        <div class="nav-social">
+          <a
+            href="https://github.com/Caleb-Gawthroupe"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/caleb-gawthroupe-34589728a/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </nav>
+
+      <!-- ======================== Hero ======================== -->
+      <section class="hero" id="hero">
+        <div class="hero-content">
+          <p class="hero-greeting">Hi, I'm</p>
+          <h1 class="hero-name">Caleb Gawthroupe</h1>
+          <p class="hero-title">Full-Stack & AI Engineer</p>
+          <p class="hero-location">
+            <i class="fa-solid fa-location-dot"></i> Toronto, CA
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn-primary">
+              View Projects <i class="fa-solid fa-arrow-down"></i>
+            </a>
+            <a
+              href="https://drive.google.com/file/d/1KlCr_9cyF6ZVWgNM-7CFlD2-byr-DPgM/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-secondary"
+            >
+              Resume <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+        <div class="scroll-indicator">
+          <span>Scroll</span>
+          <div class="chevron"></div>
+        </div>
+      </section>
+
+      <!-- ======================== About ======================== -->
+      <section id="about">
+        <div class="section-inner">
+          <div class="reveal">
+            <span class="section-label">About</span>
+            <h2 class="section-title">A bit about me.</h2>
+          </div>
+
+          <div class="about-grid">
+            <div class="reveal reveal-delay-1">
+              <p class="about-bio">
+                I am a Full-Stack and AI Engineer based in Toronto, CA.
+                Currently studying computer science at the University of
+                Toronto, I specialize in building robust web applications,
+                modern mobile experiences, and integrating intelligent LLM
+                systems into practical software solutions.
+              </p>
+              <p class="about-bio">
+                My passion lies in clean aesthetics, intuitive user interfaces,
+                and writing well-architected services that scale. From hacking
+                on asynchronous AI pipelines to crafting pixel-perfect frontend
+                layouts, I enjoy working — and learning — across the entire
+                development stack.
+              </p>
+              <a
+                href="https://drive.google.com/file/d/1KlCr_9cyF6ZVWgNM-7CFlD2-byr-DPgM/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resume-btn"
+              >
+                View Resume <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+
+            <div class="skills-panel reveal reveal-delay-2">
+              <div class="skills-category">
+                <h3 class="skills-category-title">Languages</h3>
+                <div class="skills-tags">
+                  <span class="skill-tag">Python</span>
+                  <span class="skill-tag">JavaScript</span>
+                  <span class="skill-tag">TypeScript</span>
+                  <span class="skill-tag">Dart</span>
+                  <span class="skill-tag">HTML / CSS</span>
+                  <span class="skill-tag">SQL</span>
+                  <span class="skill-tag">LaTeX</span>
+                </div>
+              </div>
+              <div class="skills-category">
+                <h3 class="skills-category-title">Frameworks & Tools</h3>
+                <div class="skills-tags">
+                  <span class="skill-tag">React</span>
+                  <span class="skill-tag">React Native</span>
+                  <span class="skill-tag">FastAPI</span>
+                  <span class="skill-tag">Docker</span>
+                  <span class="skill-tag">Firebase</span>
+                  <span class="skill-tag">PostgreSQL</span>
+                  <span class="skill-tag">Supabase</span>
+                </div>
+              </div>
+              <div class="skills-category">
+                <h3 class="skills-category-title">AI / ML</h3>
+                <div class="skills-tags">
+                  <span class="skill-tag">Claude API</span>
+                  <span class="skill-tag">OpenAI API</span>
+                  <span class="skill-tag">Gemini API</span>
+                  <span class="skill-tag">ChromaDB</span>
+                  <span class="skill-tag">NumPy</span>
+                  <span class="skill-tag">Pandas</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================== Projects ======================== -->
+      <section id="projects">
+        <div class="section-inner">
+          <div class="reveal">
+            <span class="section-label">Projects</span>
+            <h2 class="section-title">Selected works.</h2>
+          </div>
+
+          <div class="projects-grid">
+            <!-- Project 1: March Madness Predictor -->
+            <a
+              href="https://github.com/Caleb-Gawthroupe/march-madness-predictor"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-card reveal reveal-delay-1"
+              id="project-march-madness"
+            >
+              <div class="project-card-header">
+                <div class="project-card-icon">
+                  <i class="fa-solid fa-basketball"></i>
+                </div>
+                <span class="project-card-link">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </span>
+              </div>
+              <h3 class="project-card-title">March Madness Predictor</h3>
+              <p class="project-card-desc">
+                Built a machine learning model without external ML libraries
+                using gradient-boosted trees and comprehensive historical NCAA
+                data to predict tournament outcomes with high precision.
+              </p>
+              <div class="project-card-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">NumPy</span>
+                <span class="project-tag">Pandas</span>
+                <span class="project-tag">Pygame</span>
+              </div>
+            </a>
+
+            <!-- Project 2: Minutes -->
+            <a
+              href="https://github.com/Caleb-Gawthroupe/minutes"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-card reveal reveal-delay-2"
+              id="project-minutes"
+            >
+              <div class="project-card-header">
+                <div class="project-card-icon">
+                  <i class="fa-solid fa-robot"></i>
+                </div>
+                <span class="project-card-link">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </span>
+              </div>
+              <h3 class="project-card-title">Minutes</h3>
+              <p class="project-card-desc">
+                A fully autonomous agent that runs its own Instagram account,
+                keeping citizens updated with Toronto by-law changes —
+                end-to-end automated.
+              </p>
+              <div class="project-card-tags">
+                <span class="project-tag">OpenRouter</span>
+                <span class="project-tag">ChromaDB</span>
+                <span class="project-tag">FastAPI</span>
+                <span class="project-tag">Docker</span>
+                <span class="project-tag">PostgreSQL</span>
+              </div>
+            </a>
+
+            <!-- Project 3: TailorCV -->
+            <a
+              href="https://github.com/Caleb-Gawthroupe/tailor-cv"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-card reveal reveal-delay-3"
+              id="project-tailorcv"
+            >
+              <div class="project-card-header">
+                <div class="project-card-icon">
+                  <i class="fa-solid fa-file-lines"></i>
+                </div>
+                <span class="project-card-link">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </span>
+              </div>
+              <h3 class="project-card-title">TailorCV</h3>
+              <p class="project-card-desc">
+                A full-stack resume tailor using FastAPI and asynchronous LLM
+                providers to programmatically mutate LaTeX source files based on
+                job descriptions.
+              </p>
+              <div class="project-card-tags">
+                <span class="project-tag">FastAPI</span>
+                <span class="project-tag">Python</span>
+                <span class="project-tag">LLM</span>
+                <span class="project-tag">LaTeX</span>
+              </div>
+            </a>
+
+            <!-- Project 4: Streetball -->
+            <a
+              href="https://github.com/Caleb-Gawthroupe/streetball"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-card reveal reveal-delay-4"
+              id="project-streetball"
+            >
+              <div class="project-card-header">
+                <div class="project-card-icon">
+                  <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+                <span class="project-card-link">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </span>
+              </div>
+              <h3 class="project-card-title">Streetball</h3>
+              <p class="project-card-desc">
+                A mobile application that brings the addictive ranking systems
+                of competitive video games to the world of pick-up basketball.
+              </p>
+              <div class="project-card-tags">
+                <span class="project-tag">Dart</span>
+                <span class="project-tag">Google Cloud</span>
+                <span class="project-tag">Firebase</span>
+                <span class="project-tag">Mapbox</span>
+              </div>
+            </a>
+
+            <!-- Project 5: WorkNest -->
+            <a
+              href="https://github.com/Caleb-Gawthroupe/worknest"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-card reveal reveal-delay-5"
+              id="project-worknest"
+            >
+              <div class="project-card-header">
+                <div class="project-card-icon">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <span class="project-card-link">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </span>
+              </div>
+              <h3 class="project-card-title">WorkNest</h3>
+              <p class="project-card-desc">
+                Developed for the UofT × Anthropic Hackathon. Uses Claude Haiku
+                to generate and render ready-to-use resources for educators and
+                students in K-12+.
+              </p>
+              <div class="project-card-tags">
+                <span class="project-tag">Claude API</span>
+                <span class="project-tag">Docker</span>
+                <span class="project-tag">LaTeX</span>
+                <span class="project-tag">Anime.js</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================== Experience ======================== -->
+      <section id="experience">
+        <div class="section-inner">
+          <div class="reveal">
+            <span class="section-label">Experience</span>
+            <h2 class="section-title">Where I've worked.</h2>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item reveal reveal-delay-1">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card">
+                <h3 class="timeline-role">Front-End Engineering Intern</h3>
+                <p class="timeline-company">LUCA Theory</p>
+                <p class="timeline-desc">
+                  Contributed to the development of modern web applications,
+                  focusing on responsive UI/UX design and frontend performance
+                  optimization.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item reveal reveal-delay-2">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card">
+                <h3 class="timeline-role">Data Analyst</h3>
+                <p class="timeline-company">CATF × University of Toronto</p>
+                <p class="timeline-desc">
+                  Performed data analysis and visualization for environmental
+                  policy research, translating complex datasets into actionable
+                  insights.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================== Contact ======================== -->
+      <section class="contact" id="contact">
+        <div class="contact-inner">
+          <div class="reveal">
+            <h2 class="contact-title">Let's connect.</h2>
+            <p class="contact-text">
+              I'm always open to exploring new opportunities, collaborating on
+              interesting projects, or just having a conversation about tech.
             </p>
-            <p class="about-bio">
-              My passion lies in clean aesthetics, intuitive user interfaces,
-              and writing well-architected services that scale. From hacking on
-              asynchronous AI pipelines to crafting pixel-perfect frontend layouts,
-              I enjoy working — and learning — across the entire development stack.
-            </p>
-            <a href="https://drive.google.com/file/d/1KlCr_9cyF6ZVWgNM-7CFlD2-byr-DPgM/view?usp=sharing"
-              target="_blank" rel="noopener noreferrer" class="resume-btn">
-              View Resume <i class="fa-solid fa-arrow-right"></i>
+          </div>
+
+          <div class="contact-links reveal reveal-delay-1">
+            <a href="mailto:calebgawthroupe@gmail.com" class="contact-link">
+              <i class="fa-solid fa-envelope"></i> Email
+            </a>
+            <a
+              href="https://www.linkedin.com/in/caleb-gawthroupe-34589728a/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-link"
+            >
+              <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+            </a>
+            <a
+              href="https://github.com/Caleb-Gawthroupe"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-link"
+            >
+              <i class="fa-brands fa-github"></i> GitHub
             </a>
           </div>
 
-          <div class="skills-panel reveal reveal-delay-2">
-            <div class="skills-category">
-              <h3 class="skills-category-title">Languages</h3>
-              <div class="skills-tags">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">TypeScript</span>
-                <span class="skill-tag">Dart</span>
-                <span class="skill-tag">HTML / CSS</span>
-                <span class="skill-tag">SQL</span>
-                <span class="skill-tag">LaTeX</span>
-              </div>
-            </div>
-            <div class="skills-category">
-              <h3 class="skills-category-title">Frameworks & Tools</h3>
-              <div class="skills-tags">
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">React Native</span>
-                <span class="skill-tag">FastAPI</span>
-                <span class="skill-tag">Docker</span>
-                <span class="skill-tag">Firebase</span>
-                <span class="skill-tag">PostgreSQL</span>
-                <span class="skill-tag">Supabase</span>
-              </div>
-            </div>
-            <div class="skills-category">
-              <h3 class="skills-category-title">AI / ML</h3>
-              <div class="skills-tags">
-                <span class="skill-tag">Claude API</span>
-                <span class="skill-tag">OpenAI API</span>
-                <span class="skill-tag">Gemini API</span>
-                <span class="skill-tag">ChromaDB</span>
-                <span class="skill-tag">NumPy</span>
-                <span class="skill-tag">Pandas</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================== Projects ======================== -->
-    <section id="projects">
-      <div class="section-inner">
-        <div class="reveal">
-          <span class="section-label">Projects</span>
-          <h2 class="section-title">Selected works.</h2>
-        </div>
-
-        <div class="projects-grid">
-          <!-- Project 1: March Madness Predictor -->
-          <a href="https://github.com/Caleb-Gawthroupe/march-madness-predictor" target="_blank"
-            rel="noopener noreferrer" class="project-card reveal reveal-delay-1" id="project-march-madness">
-            <div class="project-card-header">
-              <div class="project-card-icon">
-                <i class="fa-solid fa-basketball"></i>
-              </div>
-              <span class="project-card-link">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </span>
-            </div>
-            <h3 class="project-card-title">March Madness Predictor</h3>
-            <p class="project-card-desc">
-              Built a machine learning model without external ML libraries using gradient-boosted trees
-              and comprehensive historical NCAA data to predict tournament outcomes with high precision.
-            </p>
-            <div class="project-card-tags">
-              <span class="project-tag">Python</span>
-              <span class="project-tag">NumPy</span>
-              <span class="project-tag">Pandas</span>
-              <span class="project-tag">Pygame</span>
-            </div>
-          </a>
-
-          <!-- Project 2: Minutes -->
-          <a href="https://github.com/Caleb-Gawthroupe/minutes" target="_blank" rel="noopener noreferrer"
-            class="project-card reveal reveal-delay-2" id="project-minutes">
-            <div class="project-card-header">
-              <div class="project-card-icon">
-                <i class="fa-solid fa-robot"></i>
-              </div>
-              <span class="project-card-link">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </span>
-            </div>
-            <h3 class="project-card-title">Minutes</h3>
-            <p class="project-card-desc">
-              A fully autonomous agent that runs its own Instagram account,
-              keeping citizens updated with Toronto by-law changes — end-to-end automated.
-            </p>
-            <div class="project-card-tags">
-              <span class="project-tag">OpenRouter</span>
-              <span class="project-tag">ChromaDB</span>
-              <span class="project-tag">FastAPI</span>
-              <span class="project-tag">Docker</span>
-              <span class="project-tag">PostgreSQL</span>
-            </div>
-          </a>
-
-          <!-- Project 3: TailorCV -->
-          <a href="https://github.com/Caleb-Gawthroupe/tailor-cv" target="_blank" rel="noopener noreferrer"
-            class="project-card reveal reveal-delay-3" id="project-tailorcv">
-            <div class="project-card-header">
-              <div class="project-card-icon">
-                <i class="fa-solid fa-file-lines"></i>
-              </div>
-              <span class="project-card-link">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </span>
-            </div>
-            <h3 class="project-card-title">TailorCV</h3>
-            <p class="project-card-desc">
-              A full-stack resume tailor using FastAPI and asynchronous LLM providers
-              to programmatically mutate LaTeX source files based on job descriptions.
-            </p>
-            <div class="project-card-tags">
-              <span class="project-tag">FastAPI</span>
-              <span class="project-tag">Python</span>
-              <span class="project-tag">LLM</span>
-              <span class="project-tag">LaTeX</span>
-            </div>
-          </a>
-
-          <!-- Project 4: Streetball -->
-          <a href="https://github.com/Caleb-Gawthroupe/streetball" target="_blank" rel="noopener noreferrer"
-            class="project-card reveal reveal-delay-4" id="project-streetball">
-            <div class="project-card-header">
-              <div class="project-card-icon">
-                <i class="fa-solid fa-mobile-screen-button"></i>
-              </div>
-              <span class="project-card-link">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </span>
-            </div>
-            <h3 class="project-card-title">Streetball</h3>
-            <p class="project-card-desc">
-              A mobile application that brings the addictive ranking systems of
-              competitive video games to the world of pick-up basketball.
-            </p>
-            <div class="project-card-tags">
-              <span class="project-tag">Dart</span>
-              <span class="project-tag">Google Cloud</span>
-              <span class="project-tag">Firebase</span>
-              <span class="project-tag">Mapbox</span>
-            </div>
-          </a>
-
-          <!-- Project 5: WorkNest -->
-          <a href="https://github.com/Caleb-Gawthroupe/worknest" target="_blank" rel="noopener noreferrer"
-            class="project-card reveal reveal-delay-5" id="project-worknest">
-            <div class="project-card-header">
-              <div class="project-card-icon">
-                <i class="fa-solid fa-graduation-cap"></i>
-              </div>
-              <span class="project-card-link">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </span>
-            </div>
-            <h3 class="project-card-title">WorkNest</h3>
-            <p class="project-card-desc">
-              Developed for the UofT × Anthropic Hackathon. Uses Claude Haiku to generate
-              and render ready-to-use resources for educators and students in K-12+.
-            </p>
-            <div class="project-card-tags">
-              <span class="project-tag">Claude API</span>
-              <span class="project-tag">Docker</span>
-              <span class="project-tag">LaTeX</span>
-              <span class="project-tag">Anime.js</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================== Experience ======================== -->
-    <section id="experience">
-      <div class="section-inner">
-        <div class="reveal">
-          <span class="section-label">Experience</span>
-          <h2 class="section-title">Where I've worked.</h2>
-        </div>
-
-        <div class="timeline">
-          <div class="timeline-item reveal reveal-delay-1">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-              <h3 class="timeline-role">Front-End Engineering Intern</h3>
-              <p class="timeline-company">LUCA Theory</p>
-              <p class="timeline-desc">
-                Contributed to the development of modern web applications, focusing on
-                responsive UI/UX design and frontend performance optimization.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item reveal reveal-delay-2">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-              <h3 class="timeline-role">Data Analyst</h3>
-              <p class="timeline-company">CATF × University of Toronto</p>
-              <p class="timeline-desc">
-                Performed data analysis and visualization for environmental policy research,
-                translating complex datasets into actionable insights.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================== Contact ======================== -->
-    <section class="contact" id="contact">
-      <div class="contact-inner">
-        <div class="reveal">
-          <h2 class="contact-title">Let's connect.</h2>
-          <p class="contact-text">
-            I'm always open to exploring new opportunities, collaborating on
-            interesting projects, or just having a conversation about tech.
+          <p class="footer-line reveal reveal-delay-2">
+            Designed & built by Caleb Gawthroupe © 2026
           </p>
         </div>
+      </section>
+    </div>
 
-        <div class="contact-links reveal reveal-delay-1">
-          <a href="mailto:calebgawthroupe@gmail.com" class="contact-link">
-            <i class="fa-solid fa-envelope"></i> Email
-          </a>
-          <a href="https://www.linkedin.com/in/caleb-gawthroupe-34589728a/" target="_blank" rel="noopener noreferrer"
-            class="contact-link">
-            <i class="fa-brands fa-linkedin-in"></i> LinkedIn
-          </a>
-          <a href="https://github.com/Caleb-Gawthroupe" target="_blank" rel="noopener noreferrer"
-            class="contact-link">
-            <i class="fa-brands fa-github"></i> GitHub
-          </a>
-        </div>
-
-        <p class="footer-line reveal reveal-delay-2">
-          Designed & built by Caleb Gawthroupe © 2026
-        </p>
-      </div>
-    </section>
-
-  </div>
-
-  <!-- App Script -->
-  <script src="script.js"></script>
-</body>
-
+    <!-- App Script -->
+    <script src="script.js"></script>
+  </body>
 </html>
