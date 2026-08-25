@@ -395,14 +395,22 @@ body, html {
   font-size: 1.3rem;
 }
 
-.controls span {
+.controls a {
+  color: white;
+  text-decoration: none;
   display: flex;
   align-items: center;
   gap: 10px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.controls a:hover {
+  color: #c9a65f;
+  transform: translateY(-1px);
 }
 
 .controls i {
-  color: #aaa;
+  color: #c9a65f;
 }
 
 /* CLICKABLE CARD & DETAILS PANEL */
