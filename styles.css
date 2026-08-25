@@ -591,3 +591,137 @@ body, html {
   box-shadow: 1px 1px 0 #222;
   transform: translateY(1px);
 }
+
+/* RESPONSIVE MEDIA QUERIES */
+
+@media (max-width: 1024px) {
+  .main-content {
+    flex-direction: column;
+    padding: 20px;
+    gap: 25px;
+  }
+
+  .side-menu {
+    width: 100%;
+    margin-top: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .menu-btn {
+    font-size: 1.3rem;
+    padding: 10px 20px;
+    flex: 1 1 auto;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .center-display {
+    justify-content: center;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  .display-panel {
+    width: 100%;
+    max-width: 750px;
+    height: auto;
+    min-height: 480px;
+    padding: 25px;
+    transform: rotate(0.5deg);
+  }
+
+  @keyframes popIn {
+    0% { transform: scale(0.95) rotate(0deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0.5deg); opacity: 1; }
+  }
+
+  .panel-header {
+    font-size: 2.3rem;
+    padding: 10px 20px;
+    margin: -25px -25px 20px -25px;
+  }
+
+  .skills-list {
+    max-height: 400px;
+  }
+
+  .scroll-content {
+    height: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  body, html {
+    overflow-y: auto;
+  }
+
+  .game-container {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .top-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .player-name {
+    font-size: 2.6rem;
+    text-align: center;
+    transform: rotate(0deg);
+  }
+
+  .top-stats {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .stat-box {
+    padding: 8px 15px;
+    flex: 1 1 calc(50% - 6px);
+    justify-content: center;
+    font-size: 0.9rem;
+  }
+
+  .player-profile {
+    width: 100%;
+    margin-top: 5px;
+    align-items: center;
+  }
+
+  .profile-pic {
+    width: 80px;
+    height: 80px;
+  }
+
+  .bottom-bar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .academic-year {
+    font-size: 1.3rem;
+  }
+
+  .controls {
+    font-size: 1.1rem;
+    justify-content: center;
+  }
+
+  .details-panel {
+    width: 90% !important;
+    max-width: 360px;
+    height: 80vh;
+    max-height: 480px;
+    padding: 30px 20px 20px 20px;
+  }
+}
