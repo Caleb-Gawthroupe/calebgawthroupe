@@ -112,8 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
       popup.classList.add('active');
     }, 10);
 
-    // Bring to front on click/mousedown
+    // Bring to front on click/mousedown/touchstart
     popup.addEventListener('mousedown', () => {
+      popup.style.zIndex = ++topZIndex;
+    });
+    popup.addEventListener('touchstart', () => {
       popup.style.zIndex = ++topZIndex;
     });
 
@@ -133,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let startX, startY;
     let initLeft, initTop;
 
-    tape.addEventListener('mousedown', (e) => {
+    function startDrag(clientX, clientY) {
       isDragging = true;
       popup.style.zIndex = ++topZIndex;
       popup.classList.add('dragging'); // disable CSS transition during active dragging
@@ -148,30 +151,56 @@ document.addEventListener('DOMContentLoaded', () => {
       popup.style.top = `${initTop}px`;
       popup.style.transform = `rotate(${randomRotate}deg)`; // remove translate offset
 
-      startX = e.clientX;
-      startY = e.clientY;
+      startX = clientX;
+      startY = clientY;
       
       tape.style.cursor = 'grabbing';
-      e.preventDefault();
-    });
+    }
 
-    document.addEventListener('mousemove', (e) => {
+    function moveDrag(clientX, clientY) {
       if (!isDragging) return;
-      
-      const dx = e.clientX - startX;
-      const dy = e.clientY - startY;
-      
+      const dx = clientX - startX;
+      const dy = clientY - startY;
       popup.style.left = `${initLeft + dx}px`;
       popup.style.top = `${initTop + dy}px`;
-    });
+    }
 
-    document.addEventListener('mouseup', () => {
+    function endDrag() {
       if (isDragging) {
         isDragging = false;
         popup.classList.remove('dragging');
         tape.style.cursor = 'grab';
       }
+    }
+
+    // Mouse listeners
+    tape.addEventListener('mousedown', (e) => {
+      startDrag(e.clientX, e.clientY);
+      e.preventDefault();
     });
+
+    document.addEventListener('mousemove', (e) => {
+      moveDrag(e.clientX, e.clientY);
+    });
+
+    document.addEventListener('mouseup', endDrag);
+
+    // Touch listeners for mobile dragging
+    tape.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        startDrag(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    });
+
+    document.addEventListener('touchmove', (e) => {
+      if (isDragging && e.touches.length === 1) {
+        moveDrag(e.touches[0].clientX, e.touches[0].clientY);
+        e.preventDefault(); // prevent background screen from scrolling during drag
+      }
+    }, { passive: false });
+
+    document.addEventListener('touchend', endDrag);
+    document.addEventListener('touchcancel', endDrag);
 
     gameContainer.appendChild(popup);
   }
