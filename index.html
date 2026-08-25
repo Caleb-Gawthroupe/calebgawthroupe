@@ -3,495 +3,648 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Caleb Gawthroupe</title>
-    <meta
-      name="description"
-      content="Portfolio of Caleb Gawthroupe — Full-Stack and AI Engineer based in Toronto. Building intelligent web apps, ML systems, and modern mobile experiences."
-    />
-
-    <!-- Fonts -->
+    <title>Caleb Gawthroupe - Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Oswald:wght@400;500;600&family=Caveat:wght@600&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-
-    <!-- Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <!-- Styles -->
     <link rel="stylesheet" href="styles.css" />
   </head>
-
   <body>
-    <!-- Background UI Decorations -->
-    <div class="bg-ui">
-      <div class="bg-grid"></div>
-      <div class="glow-orb orb-1"></div>
-      <div class="glow-orb orb-2"></div>
-      <div class="glow-orb orb-3"></div>
-
-      <!-- Tech framing accents -->
-      <div class="ui-accent ui-top-left"></div>
-      <div class="ui-accent ui-top-right"></div>
-      <div class="ui-accent ui-bottom-left"></div>
-      <div class="ui-accent ui-bottom-right"></div>
-    </div>
-
-    <!-- Three.js Canvas -->
-    <canvas id="three-canvas"></canvas>
-
-    <!-- Content -->
-    <div class="content-wrapper">
-      <!-- ======================== Navigation ======================== -->
-      <nav class="navbar" id="navbar">
-        <a href="#hero" class="nav-brand">C<span>.</span>G</a>
-
-        <div class="nav-links" id="nav-links">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#experience">Experience</a>
-          <a href="#contact">Contact</a>
-        </div>
-
-        <div class="nav-social">
+    <div class="game-container">
+      <div class="top-bar">
+        <div class="player-name">Caleb Gawthroupe</div>
+        <div class="top-stats">
           <a
-            href="https://github.com/Caleb-Gawthroupe"
+            href="https://www.linkedin.com/in/caleb-gawthroupe/"
             target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
+            class="stat-box"
+          >
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a
+            href="https://github.com/caleb-gawthroupe"
+            target="_blank"
+            class="stat-box"
           >
             <i class="fa-brands fa-github"></i>
           </a>
-          <a
-            href="https://www.linkedin.com/in/caleb-gawthroupe-34589728a/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-          >
-            <i class="fa-brands fa-linkedin-in"></i>
-          </a>
-          <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
-            <i class="fa-solid fa-bars"></i>
+          <div class="player-profile">
+            <img src="headshot.png" alt="Caleb" class="profile-pic" />
+            <div class="major-badge">YEAR 2 - CS MAJOR</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div class="side-menu">
+          <button class="menu-btn" data-target="skills">
+            <i class="fa-solid fa-house"></i> HOME
           </button>
+          <button class="menu-btn" data-target="experience">
+            <i class="fa-solid fa-briefcase"></i> EXPERIENCE
+          </button>
+          <button class="menu-btn" data-target="projects">
+            <i class="fa-solid fa-code"></i> PROJECTS
+          </button>
+          <button class="menu-btn" data-target="education">
+            <i class="fa-solid fa-graduation-cap"></i> EDUCATION
+          </button>
+          <a
+            href="https://drive.google.com/file/d/1s54xEIUU1OixeUDqc_MRL1StvtYi_eUo/view?usp=sharing"
+            target="_blank"
+            class="menu-btn"
+          >
+            <i class="fa-regular fa-file-lines"></i> RESUME
+          </a>
         </div>
-      </nav>
 
-      <!-- ======================== Hero ======================== -->
-      <section class="hero" id="hero">
-        <div class="hero-content">
-          <p class="hero-greeting">Hi, I'm</p>
-          <h1 class="hero-name">Caleb Gawthroupe</h1>
-          <p class="hero-title">Full-Stack & AI Engineer</p>
-          <p class="hero-location">
-            <i class="fa-solid fa-location-dot"></i> Toronto, CA
-          </p>
-          <div class="hero-cta">
-            <a href="#projects" class="btn-primary">
-              View Projects <i class="fa-solid fa-arrow-down"></i>
-            </a>
-            <a
-              href="https://drive.google.com/file/d/1s54xEIUU1OixeUDqc_MRL1StvtYi_eUo/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-secondary"
-            >
-              Resume <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
+        <div class="center-display">
+          <!-- Default View: Skills -->
+          <div class="display-panel active" id="panel-skills">
+            <h2 class="panel-header">SKILLS</h2>
+            <div class="skills-tabs">
+              <button class="skills-tab-btn active" data-skill-target="languages">LANGUAGES</button>
+              <button class="skills-tab-btn" data-skill-target="ai-ml">AI / ML</button>
+              <button class="skills-tab-btn" data-skill-target="frameworks-tools">FRAMEWORKS & TOOLS</button>
+              <button class="skills-tab-btn" data-skill-target="data-science">DATA SCIENCE</button>
+            </div>
+
+            <!-- Languages List -->
+            <div class="skills-list skills-content-group" id="skills-languages" style="display: flex;">
+              <div class="skill-row">
+                <i
+                  class="fa-brands fa-python skill-icon"
+                  style="color: #3776ab"
+                ></i>
+                <span class="skill-name">PYTHON</span>
+                <div class="progress-bar">
+                  <div
+                    class="fill"
+                    style="width: 90%; background-color: #3776ab"
+                  ></div>
+                </div>
+                <span class="skill-level">4</span>
+                <button class="upgrade-btn">
+                  <i class="fa-solid fa-arrow-up"></i> UPGRADE
+                </button>
+              </div>
+              <div class="skill-row">
+                <i
+                  class="fa-brands fa-java skill-icon"
+                  style="color: #f89820"
+                ></i>
+                <span class="skill-name">JAVA</span>
+                <div class="progress-bar">
+                  <div
+                    class="fill"
+                    style="width: 30%; background-color: #f89820"
+                  ></div>
+                </div>
+                <span class="skill-level">1</span>
+                <button class="upgrade-btn">
+                  <i class="fa-solid fa-arrow-up"></i> UPGRADE
+                </button>
+              </div>
+              <div class="skill-row">
+                <i
+                  class="fa-brands fa-js skill-icon"
+                  style="color: #e7a400"
+                ></i>
+                <span class="skill-name">JS</span>
+                <div class="progress-bar">
+                  <div
+                    class="fill"
+                    style="width: 40%; background-color: #e7a400"
+                  ></div>
+                </div>
+                <span class="skill-level">2</span>
+                <button class="upgrade-btn">
+                  <i class="fa-solid fa-arrow-up"></i> UPGRADE
+                </button>
+              </div>
+              <div class="skill-row">
+                <i
+                  class="fa-brands fa-html5 skill-icon"
+                  style="color: #e34f26"
+                ></i>
+                <span class="skill-name">HTML/CSS</span>
+                <div class="progress-bar">
+                  <div
+                    class="fill"
+                    style="width: 75%; background-color: #e34f26"
+                  ></div>
+                </div>
+                <span class="skill-level">3</span>
+                <button class="upgrade-btn">
+                  <i class="fa-solid fa-arrow-up"></i> UPGRADE
+                </button>
+              </div>
+              <div class="skill-row">
+                <i
+                  class="fa-solid fa-database skill-icon"
+                  style="color: #00758f"
+                ></i>
+                <span class="skill-name">SQL</span>
+                <div class="progress-bar">
+                  <div
+                    class="fill"
+                    style="width: 50%; background-color: #00758f"
+                  ></div>
+                </div>
+                <span class="skill-level">2</span>
+                <button class="upgrade-btn">
+                  <i class="fa-solid fa-arrow-up"></i> UPGRADE
+                </button>
+              </div>
+              <div class="skill-row">
+                <i
+                  class="fa-brands fa-r-project skill-icon"
+                  style="color: #278b9f"
+                ></i>
+                <span class="skill-name">R</span>
+                <div class="progress-bar">
+                  <div
+                    class="fill"
+                    style="width: 70%; background-color: #278b9f"
+                  ></div>
+                </div>
+                <span class="skill-level">3</span>
+                <button class="upgrade-btn">
+                  <i class="fa-solid fa-arrow-up"></i> UPGRADE
+                </button>
+              </div>
+            </div>
+
+            <!-- AI / ML List -->
+            <div class="skills-list skills-content-group" id="skills-ai-ml" style="display: none;">
+              <div class="skill-row">
+                <i class="fa-solid fa-link skill-icon" style="color: #12c2e9"></i>
+                <span class="skill-name">LANGCHAIN</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 55%; background-color: #12c2e9"></div>
+                </div>
+                <span class="skill-level">2</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+              <div class="skill-row">
+                <i class="fa-solid fa-database skill-icon" style="color: #f64f59"></i>
+                <span class="skill-name">CHROMADB</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 35%; background-color: #f64f59"></div>
+                </div>
+                <span class="skill-level">2</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+              <div class="skill-row">
+                <i class="fa-solid fa-gears skill-icon" style="color: #c471ed"></i>
+                <span class="skill-name">RAG PIPELINES</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 45%; background-color: #c471ed"></div>
+                </div>
+                <span class="skill-level">2</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+              <div class="skill-row">
+                <i class="fa-solid fa-bolt skill-icon" style="color: #f89820"></i>
+                <span class="skill-name">OPENAI / LLM APIS</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 85%; background-color: #f89820"></div>
+                </div>
+                <span class="skill-level">3</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+              <div class="skill-row">
+                <i class="fa-solid fa-wand-magic-sparkles skill-icon" style="color: #b5179e"></i>
+                <span class="skill-name">PROMPT ENG.</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 90%; background-color: #b5179e"></div>
+                </div>
+                <span class="skill-level">4</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+            </div>
+
+            <!-- Frameworks & Tools List -->
+            <div class="skills-list skills-content-group" id="skills-frameworks-tools" style="display: none;">
+              <div class="skill-row">
+                <i class="fa-solid fa-bolt skill-icon" style="color: #009688"></i>
+                <span class="skill-name">FASTAPI</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 85%; background-color: #009688"></div>
+                </div>
+                <span class="skill-level">3</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+              <div class="skill-row">
+                <i class="fa-brands fa-node-js skill-icon" style="color: #339933"></i>
+                <span class="skill-name">NODE.JS</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 45%; background-color: #339933;"></div>
+                </div>
+                <span class="skill-level">1</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+              <div class="skill-row">
+                <svg class="skill-icon" viewBox="0 0 166.3 200" style="width: 35px; height: 26px; display: inline-block; vertical-align: middle;">
+                  <path d="M166.3 83.3L83.3 0 0 83.3l41.7 41.7 124.6-124.7z" fill="#40D0FB"/>
+                  <path d="M83.3 200l83-83-41.7-41.7-124.6 124.7 83.3 0z" fill="#0175C2"/>
+                  <path d="M125 75.3l-41.7 41.7 41.7 41.7 41.3-41.7-41.3-41.7z" fill="#02569B"/>
+                </svg>
+                <span class="skill-name">FLUTTER</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 75%; background-color: #02569b"></div>
+                </div>
+                <span class="skill-level">3</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+              <div class="skill-row">
+                <i class="fa-solid fa-fire skill-icon" style="color: #FFCA28"></i>
+                <span class="skill-name">FIREBASE</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 75%; background-color: #FFCA28"></div>
+                </div>
+                <span class="skill-level">3</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+              <div class="skill-row">
+                <i class="fa-brands fa-docker skill-icon" style="color: #2496ED"></i>
+                <span class="skill-name">DOCKER</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 50%; background-color: #2496ED"></div>
+                </div>
+                <span class="skill-level">2</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+              <div class="skill-row">
+                <i class="fa-solid fa-database skill-icon" style="color: #3ECF8E"></i>
+                <span class="skill-name">SUPABASE</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 55%; background-color: #3ECF8E"></div>
+                </div>
+                <span class="skill-level">2</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+              <div class="skill-row">
+                <i class="fa-brands fa-github skill-icon" style="color: #2088FF"></i>
+                <span class="skill-name">GITHUBACTIONS</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 75%; background-color: #2088FF"></div>
+                </div>
+                <span class="skill-level">3</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+              <div class="skill-row">
+                <i class="fa-brands fa-stripe skill-icon" style="color: #635BFF"></i>
+                <span class="skill-name">STRIPE API</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 85%; background-color: #635BFF"></div>
+                </div>
+                <span class="skill-level">3</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+            </div>
+
+            <!-- Data Science List -->
+            <div class="skills-list skills-content-group" id="skills-data-science" style="display: none;">
+              <div class="skill-row">
+                <i class="fa-solid fa-chart-simple skill-icon" style="color: #150458"></i>
+                <span class="skill-name">PANDAS</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 80%; background-color: #150458"></div>
+                </div>
+                <span class="skill-level">3</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+              <div class="skill-row">
+                <i class="fa-solid fa-calculator skill-icon" style="color: #013243"></i>
+                <span class="skill-name">NUMPY</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 45%; background-color: #013243"></div>
+                </div>
+                <span class="skill-level">2</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+              <div class="skill-row">
+                <i class="fa-solid fa-filter skill-icon" style="color: #278b9f"></i>
+                <span class="skill-name">TIDYVERSE</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 75%; background-color: #278b9f"></div>
+                </div>
+                <span class="skill-level">3</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+              <div class="skill-row">
+                <i class="fa-solid fa-chart-line skill-icon" style="color: #1070b0"></i>
+                <span class="skill-name">GGPLOT2</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 80%; background-color: #1070b0"></div>
+                </div>
+                <span class="skill-level">3</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+              <div class="skill-row">
+                <i class="fa-solid fa-percent skill-icon" style="color: #9b5de5"></i>
+                <span class="skill-name">STATS ANAL.</span>
+                <div class="progress-bar">
+                  <div class="fill" style="width: 45%; background-color: #9b5de5"></div>
+                </div>
+                <span class="skill-level">2</span>
+                <button class="upgrade-btn"><i class="fa-solid fa-arrow-up"></i> UPGRADE</button>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="scroll-indicator">
-          <span>Scroll</span>
-          <div class="chevron"></div>
-        </div>
-      </section>
 
-      <!-- ======================== About ======================== -->
-      <section id="about">
-        <div class="section-inner">
-          <div class="reveal">
-            <span class="section-label">About</span>
-            <h2 class="section-title">A bit about me.</h2>
-          </div>
-
-          <div class="about-grid">
-            <div class="reveal reveal-delay-1">
-              <p class="about-bio">
-                I am a Full-Stack and AI Engineer based in Toronto, CA.
-                Currently studying computer science at the University of
-                Toronto, I specialize in building robust web applications,
-                modern mobile experiences, and integrating intelligent LLM
-                systems into practical software solutions.
-              </p>
-              <p class="about-bio">
-                Outside of work, I love playing volleyball, golfing, and working
-                out. I played volleyball for both my high school (go bears!) and
-                competitively for the Guelph Gryphons. Golf is a newer hobby, so
-                while I'm always down for a tee-time, don't expect it to be a
-                quick round! I also love a good movie, currently my three
-                favourites are Good Will Hunting, Memento, and Whiplash.
-                Definetly give those a watch if you haven't already, and feel
-                free to shoot me any good suggestions!
-              </p>
-              <a
-                href="https://drive.google.com/file/d/1s54xEIUU1OixeUDqc_MRL1StvtYi_eUo/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="resume-btn"
+          <!-- Experience View -->
+          <div class="display-panel" id="panel-experience">
+            <h2 class="panel-header">EXPERIENCE LOG</h2>
+            <div class="scroll-content">
+              <div class="card clickable-card" data-popup-id="exp-grandpals">
+                <h3>
+                  Platform Coordinator & Program Operations Lead @ GrandPals
+                </h3>
+                <p>May 2026 - Present</p>
+                <div class="card-detail-template" style="display: none">
+                  <h3 class="detail-title">
+                    Platform Coordinator & Program Operations Lead
+                  </h3>
+                  <h4 class="detail-subtitle">
+                    GrandPals &middot; Orangeville, ON
+                  </h4>
+                  <p class="detail-date">
+                    <i class="fa-regular fa-calendar"></i> May 2026 – Present
+                  </p>
+                  <ul class="detail-bullets">
+                    <li>
+                      Audited and resolved data integrity issues from legacy
+                      WordPress migrations, restoring 80+ participant profiles
+                      and reducing operational errors across the HCIA platform.
+                    </li>
+                    <li>
+                      Redesigned regional programming workflows for operational
+                      staff, cutting 5 hours of manual coordination overhead per
+                      week.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div
+                class="card clickable-card"
+                data-popup-id="exp-smartbookbuilder"
               >
-                View Resume <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
-
-            <div class="skills-panel reveal reveal-delay-2">
-              <div class="skills-category">
-                <h3 class="skills-category-title">Languages</h3>
-                <div class="skills-tags">
-                  <span class="skill-tag">Python</span>
-                  <span class="skill-tag">JavaScript</span>
-                  <span class="skill-tag">TypeScript</span>
-                  <span class="skill-tag">Dart</span>
-                  <span class="skill-tag">HTML / CSS</span>
-                  <span class="skill-tag">LaTeX</span>
+                <h3>Web Developer @ SmartBookBuilder</h3>
+                <p>May 2026 - Present</p>
+                <div class="card-detail-template" style="display: none">
+                  <h3 class="detail-title">Web Developer</h3>
+                  <h4 class="detail-subtitle">
+                    SmartBookBuilder &middot; Remote, Contract
+                  </h4>
+                  <p class="detail-date">
+                    <i class="fa-regular fa-calendar"></i> May 2026 – Present
+                  </p>
+                  <ul class="detail-bullets">
+                    <li>
+                      Migrated core monetization from legacy WarriorPlus to
+                      Stripe, building PCI-compliant payment funnels with custom
+                      PHP and Stripe Elements that eliminated 100% of legacy
+                      checkout friction.
+                    </li>
+                    <li>
+                      Automated tiered access control via server-side
+                      authorization scripts, saving 2 hours/week of manual user
+                      management.
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <div class="skills-category">
-                <h3 class="skills-category-title">Frameworks & Tools</h3>
-                <div class="skills-tags">
-                  <span class="skill-tag">React</span>
-                  <span class="skill-tag">React Native</span>
-                  <span class="skill-tag">FastAPI</span>
-                  <span class="skill-tag">Docker</span>
-                  <span class="skill-tag">Firebase</span>
-                  <span class="skill-tag">PostgreSQL</span>
-                  <span class="skill-tag">Supabase</span>
+              <div class="card clickable-card" data-popup-id="exp-lucatheory">
+                <h3>Front-End Engineering Intern @ LUCA Theory</h3>
+                <p>Mar 2026 - Sep 2026</p>
+                <div class="card-detail-template" style="display: none">
+                  <h3 class="detail-title">Front-End Engineering Intern</h3>
+                  <h4 class="detail-subtitle">
+                    LUCA Theory &middot; Toronto, ON
+                  </h4>
+                  <p class="detail-date">
+                    <i class="fa-regular fa-calendar"></i> Mar 2026 – Sep 2026
+                  </p>
+                  <ul class="detail-bullets">
+                    <li>
+                      Built a real-time prediction market dashboard pitting 30
+                      competitors (humans, LLMs, and digital twins) against each
+                      other forecasting World Cup outcomes, with a live
+                      leaderboard and portfolio tracker powered by Google
+                      BigQuery.
+                    </li>
+                    <li>
+                      Resolved 16 high-priority UI bugs across 4 web properties,
+                      unblocking the H1-2026 platform launch on schedule.
+                    </li>
+                    <li>
+                      Managed LinkedIn content for 2 company accounts, driving a
+                      115% increase in impressions and 38% boost in engagement
+                      over 12 weeks.
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <div class="skills-category">
-                <h3 class="skills-category-title">AI / ML</h3>
-                <div class="skills-tags">
-                  <span class="skill-tag">Claude API</span>
-                  <span class="skill-tag">OpenAI API</span>
-                  <span class="skill-tag">Gemini API</span>
-                  <span class="skill-tag">ChromaDB</span>
-                  <span class="skill-tag">NumPy</span>
-                  <span class="skill-tag">Pandas</span>
+              <div class="card clickable-card" data-popup-id="exp-catf">
+                <h3>Data Analyst @ University of Toronto × CATF Africa</h3>
+                <p>Feb 2026 - Apr 2026</p>
+                <div class="card-detail-template" style="display: none">
+                  <h3 class="detail-title">Data Analyst</h3>
+                  <h4 class="detail-subtitle">
+                    University of Toronto &times; CATF Africa &middot; Toronto,
+                    ON
+                  </h4>
+                  <p class="detail-date">
+                    <i class="fa-regular fa-calendar"></i> Feb 2026 – Apr 2026
+                  </p>
+                  <ul class="detail-bullets">
+                    <li>
+                      Cleaned and integrated 40+ variables across 50+ countries
+                      to build a composite energy sector health index for
+                      utilities and governments across Africa.
+                    </li>
+                    <li>
+                      Applied statistical analysis in R (tidyverse, ggplot2) to
+                      identify drivers of electrification rates; co-authored a
+                      24-slide findings report for UofT faculty and external
+                      partners.
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- ======================== Projects ======================== -->
-      <section id="projects">
-        <div class="section-inner">
-          <div class="reveal">
-            <span class="section-label">Projects</span>
-            <h2 class="section-title">Selected works.</h2>
-          </div>
-
-          <div class="projects-grid">
-            <!-- Project 1: March Madness Predictor -->
-            <a
-              href="https://github.com/Caleb-Gawthroupe/march-madness-predictor"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="project-card reveal reveal-delay-1"
-              id="project-march-madness"
-            >
-              <div class="project-card-header">
-                <div class="project-card-icon">
-                  <i class="fa-solid fa-basketball"></i>
+          <!-- Projects View -->
+          <div class="display-panel" id="panel-projects">
+            <h2 class="panel-header">PROJECTS</h2>
+            <div class="scroll-content">
+              <div
+                class="card clickable-card"
+                data-popup-id="proj-marchmadness"
+              >
+                <h3>March Madness Predictor</h3>
+                <p>
+                  Built an ML model from scratch using gradient-boosted trees
+                  for NCAA data.
+                </p>
+                <div class="card-detail-template" style="display: none">
+                  <h3 class="detail-title">March Madness Predictor</h3>
+                  <h4 class="detail-subtitle">Python &middot; Mar 2026</h4>
+                  <p class="detail-date">
+                    <i class="fa-solid fa-code"></i>Custom Decision Tree
+                  </p>
+                  <ul class="detail-bullets">
+                    <li>
+                      Built a custom Gradient Boosted Decision Tree (GBDT)
+                      framework from scratch in Python and NumPy, achieving a
+                      162/192 score on the 2026 March Madness bracket by
+                      implementing additive boosting, log-loss optimization, and
+                      pseudo-residual learning algorithms.
+                    </li>
+                    <li>
+                      Reduced deployment latency by 93% by designing a JSON
+                      serialization pipeline for complex tree ensembles,
+                      enabling rapid model persistence and loading without
+                      retraining.
+                    </li>
+                  </ul>
                 </div>
-                <span class="project-card-link">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </span>
               </div>
-              <h3 class="project-card-title">March Madness Predictor</h3>
-              <p class="project-card-desc">
-                Built a machine learning model without external ML libraries
-                using gradient-boosted trees and comprehensive historical NCAA
-                data to predict tournament outcomes with high precision.
-              </p>
-              <div class="project-card-tags">
-                <span class="project-tag">Python</span>
-                <span class="project-tag">NumPy</span>
-                <span class="project-tag">Pandas</span>
-                <span class="project-tag">Pygame</span>
-              </div>
-            </a>
-
-            <!-- Project 2: Minutes -->
-            <a
-              href="https://github.com/Caleb-Gawthroupe/minutes"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="project-card reveal reveal-delay-2"
-              id="project-minutes"
-            >
-              <div class="project-card-header">
-                <div class="project-card-icon">
-                  <i class="fa-solid fa-robot"></i>
+              <div class="card clickable-card" data-popup-id="proj-minutes">
+                <h3>Minutes</h3>
+                <p>
+                  Autonomous agent managing an Instagram account for Toronto
+                  by-law changes.
+                </p>
+                <div class="card-detail-template" style="display: none">
+                  <h3 class="detail-title">Minutes</h3>
+                  <h4 class="detail-subtitle">
+                    Python, FastAPI, LangChain, ChromaDB, OpenRouter,
+                    Playwright, Supabase, Docker &middot; Mar 2026
+                  </h4>
+                  <p class="detail-date">
+                    <i class="fa-solid fa-code"></i> Autonomous AI Agent
+                  </p>
+                  <ul class="detail-bullets">
+                    <li>
+                      Autonomous AI agent that scrapes Toronto City Council
+                      agendas, embeds content into a ChromaDB RAG vector store,
+                      and auto-generates Instagram carousel posts—reducing civic
+                      content production time to zero.
+                    </li>
+                    <li>
+                      DM pipeline routing constituents to AI-drafted emails or
+                      petition signing via Supabase PostgreSQL, compressing the
+                      civic action loop to under 60 seconds.
+                    </li>
+                  </ul>
                 </div>
-                <span class="project-card-link">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </span>
               </div>
-              <h3 class="project-card-title">Minutes</h3>
-              <p class="project-card-desc">
-                A fully autonomous agent that runs its own Instagram account,
-                keeping citizens updated with Toronto by-law changes —
-                end-to-end automated.
-              </p>
-              <div class="project-card-tags">
-                <span class="project-tag">OpenRouter</span>
-                <span class="project-tag">ChromaDB</span>
-                <span class="project-tag">FastAPI</span>
-                <span class="project-tag">Docker</span>
-                <span class="project-tag">PostgreSQL</span>
-              </div>
-            </a>
-
-            <!-- Project 3: TailorCV -->
-            <a
-              href="https://github.com/Caleb-Gawthroupe/tailor-cv"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="project-card reveal reveal-delay-3"
-              id="project-tailorcv"
-            >
-              <div class="project-card-header">
-                <div class="project-card-icon">
-                  <i class="fa-solid fa-file-lines"></i>
+              <div class="card clickable-card" data-popup-id="proj-tailorcv">
+                <h3>TailorCV</h3>
+                <p>
+                  Full-stack resume tailor using FastAPI and LLMs to mutate
+                  LaTeX files.
+                </p>
+                <div class="card-detail-template" style="display: none">
+                  <h3 class="detail-title">TailorCV</h3>
+                  <h4 class="detail-subtitle">
+                    HTML/CSS, JS, Python, SlowAPI, UI/UX Principles &middot;
+                    March 2026
+                  </h4>
+                  <p class="detail-date">
+                    <i class="fa-solid fa-code"></i> Full-Stack Web Application
+                  </p>
+                  <ul class="detail-bullets">
+                    <li>
+                      Engineered a full-stack, AI-powered web application that
+                      parses and dynamically tailors LaTeX resumes to specific
+                      job descriptions using OpenAI, Anthropic, and Google
+                      Gemini language models.
+                    </li>
+                    <li>
+                      Designed a premium, responsive UI/UX using HTML, CSS
+                      (Vanilla), and JavaScript, implementing Gestalt design
+                      principles (Proximity, Visibility) to guide users through
+                      complex configuration and file-upload workflows.
+                    </li>
+                    <li>
+                      Developed a stateless Python/FastAPI backend that
+                      processes unstructured text, orchestrates AI generation,
+                      and integrates with the texlive.net REST API to compile
+                      LaTeX into Base64-encoded PDFs on the fly.
+                    </li>
+                    <li>
+                      Architected a cost-effective decoupled deployment
+                      pipeline, hosting the static frontend via GitHub Pages and
+                      the backend compute engine on Render.com, secured by
+                      strict CORS policies and IP-based rate limiting (SlowAPI).
+                    </li>
+                  </ul>
                 </div>
-                <span class="project-card-link">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </span>
-              </div>
-              <h3 class="project-card-title">TailorCV</h3>
-              <p class="project-card-desc">
-                A full-stack resume tailor using FastAPI and asynchronous LLM
-                providers to programmatically mutate LaTeX source files based on
-                job descriptions.
-              </p>
-              <div class="project-card-tags">
-                <span class="project-tag">FastAPI</span>
-                <span class="project-tag">Python</span>
-                <span class="project-tag">LLM</span>
-                <span class="project-tag">LaTeX</span>
-              </div>
-            </a>
-
-            <!-- Project 4: Streetball -->
-            <a
-              href="https://github.com/Caleb-Gawthroupe/streetball"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="project-card reveal reveal-delay-4"
-              id="project-streetball"
-            >
-              <div class="project-card-header">
-                <div class="project-card-icon">
-                  <i class="fa-solid fa-mobile-screen-button"></i>
-                </div>
-                <span class="project-card-link">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </span>
-              </div>
-              <h3 class="project-card-title">Streetball</h3>
-              <p class="project-card-desc">
-                A mobile application that brings the addictive ranking systems
-                of competitive video games to the world of pick-up basketball.
-              </p>
-              <div class="project-card-tags">
-                <span class="project-tag">Dart</span>
-                <span class="project-tag">Google Cloud</span>
-                <span class="project-tag">Firebase</span>
-                <span class="project-tag">Mapbox</span>
-              </div>
-            </a>
-
-            <!-- Project 5: WorkNest -->
-            <a
-              href="https://github.com/Caleb-Gawthroupe/worknest"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="project-card reveal reveal-delay-5"
-              id="project-worknest"
-            >
-              <div class="project-card-header">
-                <div class="project-card-icon">
-                  <i class="fa-solid fa-graduation-cap"></i>
-                </div>
-                <span class="project-card-link">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </span>
-              </div>
-              <h3 class="project-card-title">WorkNest</h3>
-              <p class="project-card-desc">
-                Developed for the UofT × Anthropic Hackathon. Uses Claude Haiku
-                to generate and render ready-to-use resources for educators and
-                students in K-12+.
-              </p>
-              <div class="project-card-tags">
-                <span class="project-tag">Claude API</span>
-                <span class="project-tag">Docker</span>
-                <span class="project-tag">LaTeX</span>
-                <span class="project-tag">Anime.js</span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- ======================== Experience ======================== -->
-      <section id="experience">
-        <div class="section-inner">
-          <div class="reveal">
-            <span class="section-label">Experience</span>
-            <h2 class="section-title">Where I've worked.</h2>
-          </div>
-
-          <div class="timeline">
-            <div class="timeline-item reveal reveal-delay-1">
-              <div class="timeline-dot"></div>
-              <div class="timeline-card">
-                <h3 class="timeline-role">Web Developer</h3>
-                <p class="timeline-company">SmartBookBuilder &bull; Contract Part-time</p>
-                <div class="timeline-meta">
-                  <span class="timeline-meta-item">
-                    <i class="fa-regular fa-calendar"></i> May 2026 - Present
-                  </span>
-                  <span class="timeline-meta-item">
-                    <i class="fa-solid fa-location-dot"></i> Orangeville, ON &bull; Remote
-                  </span>
-                </div>
-                <ul class="timeline-points">
-                  <li><strong>Architected Subscription Migration:</strong> Directed the end-to-end migration of the platform's core monetization infrastructure from legacy WarriorPlus to a custom automated Stripe subscription model.</li>
-                  <li><strong>Engineered High-Conversion Checkout:</strong> Developed unified registration and payment funnels using custom PHP templates and Stripe Elements to maximize transaction security.</li>
-                  <li><strong>Automated Tiered Access:</strong> Programmed server-side scripts to handle authorization boundaries and real-time automated upgrades for premium entitlements.</li>
-                  <li><strong>Optimized Database Schemas:</strong> Engineered a customized relational database structure, moving away from restrictive CMS schemas to support granular user profiles and speed.</li>
-                </ul>
               </div>
             </div>
+          </div>
 
-            <div class="timeline-item reveal reveal-delay-2">
-              <div class="timeline-dot"></div>
-              <div class="timeline-card">
-                <h3 class="timeline-role">Platform Coordinator &amp; Program Operations Lead</h3>
-                <p class="timeline-company">GrandPals &bull; Internship</p>
-                <div class="timeline-meta">
-                  <span class="timeline-meta-item">
-                    <i class="fa-regular fa-calendar"></i> May 2026 - Present
-                  </span>
-                  <span class="timeline-meta-item">
-                    <i class="fa-solid fa-location-dot"></i> Orangeville, ON &bull; Remote
-                  </span>
+          <!-- Education View -->
+          <div class="display-panel" id="panel-education">
+            <h2 class="panel-header">EDUCATION</h2>
+            <div class="scroll-content">
+              <div class="card clickable-card" data-popup-id="edu-uoft">
+                <h3>University of Toronto</h3>
+                <p>Honours Bachelor of Science in Computer Science</p>
+                <div class="card-detail-template" style="display: none">
+                  <h3 class="detail-title">University of Toronto</h3>
+                  <h4 class="detail-subtitle">
+                    Honours Bachelor of Science in Computer Science
+                  </h4>
+                  <p class="detail-date">
+                    <i class="fa-solid fa-graduation-cap"></i> Expected
+                    Graduation: 2029
+                  </p>
+                  <ul class="detail-bullets">
+                    <li><strong>GPA:</strong> 4.0</li>
+                    <li>
+                      <strong>Relevant Coursework:</strong>
+                      <ul
+                        style="
+                          margin-left: 15px;
+                          margin-top: 5px;
+                          list-style-type: circle;
+                        "
+                      >
+                        <li>Calculus with Proofs</li>
+                        <li>Linear Algebra</li>
+                      </ul>
+                    </li>
+                  </ul>
                 </div>
-                <ul class="timeline-points">
-                  <li><strong>Administered Platform Infrastructure:</strong> Managed core HCIA platform workflows to support operational staff and streamline regional programming.</li>
-                  <li><strong>Led Data Migration &amp; Cleanup:</strong> Audited and resolved legacy data integrity issues, systematically refreshing participant profiles and orientation histories.</li>
-                  <li><strong>Product &amp; UI/UX Advocacy:</strong> Documented technical feature requests and UI/UX improvements, including localized tracking iconography and bulk data exports.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="timeline-item reveal reveal-delay-3">
-              <div class="timeline-dot"></div>
-              <div class="timeline-card">
-                <h3 class="timeline-role">UI/UX and Digital Marketing Intern</h3>
-                <p class="timeline-company">LUCA Theory &bull; Internship</p>
-                <div class="timeline-meta">
-                  <span class="timeline-meta-item">
-                    <i class="fa-regular fa-calendar"></i> Mar 2026 - Present
-                  </span>
-                  <span class="timeline-meta-item">
-                    <i class="fa-solid fa-location-dot"></i> Toronto, ON &bull; Remote
-                  </span>
-                </div>
-                <ul class="timeline-points">
-                  <li><strong>Front-End Engineering:</strong> Shipped UI updates and resolved high-priority layout bugs, routing errors, and responsive design issues.</li>
-                  <li><strong>Generative AI Pipeline:</strong> Architected a social media automation pipeline utilizing LLMs and image generation for brand presence.</li>
-                  <li><strong>Conversion Optimization:</strong> Optimized site routing and CTA functionality, eliminating drop-offs for the platform launch.</li>
-                  <li><strong>Multi-Channel Growth:</strong> Managed company accounts and drafted content, driving a 115% increase in impressions and a 38% boost in engagement.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="timeline-item reveal reveal-delay-4">
-              <div class="timeline-dot"></div>
-              <div class="timeline-card">
-                <h3 class="timeline-role">Data Analyst</h3>
-                <p class="timeline-company">UofT x CATF Africa &bull; Seasonal</p>
-                <div class="timeline-meta">
-                  <span class="timeline-meta-item">
-                    <i class="fa-regular fa-calendar"></i> Feb 2026 - Mar 2026 (2 mos)
-                  </span>
-                  <span class="timeline-meta-item">
-                    <i class="fa-solid fa-location-dot"></i> Toronto, ON &bull; Hybrid
-                  </span>
-                </div>
-                <ul class="timeline-points">
-                  <li><strong>Energy Index Construction:</strong> Collected and cleaned 40+ variables across 50+ countries to construct a composite energy health index.</li>
-                  <li><strong>Electrification Insights:</strong> Analyzed African client data in R to evaluate how economic and demographic factors influence grid reliability.</li>
-                  <li><strong>Predictive Modeling:</strong> Built logistic regression and classification tree models linking demographics, infrastructure, and electricity access.</li>
-                  <li><strong>Insights Synthesis:</strong> Co-authored a 24-slide analytical report presenting findings and visualizations to project partners.</li>
-                </ul>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <!-- ======================== Contact ======================== -->
-      <section class="contact" id="contact">
-        <div class="contact-inner">
-          <div class="reveal">
-            <h2 class="contact-title">Let's connect.</h2>
-            <p class="contact-text">
-              I'm always open to exploring new opportunities, collaborating on
-              interesting projects, or just having a conversation about tech.
-            </p>
-          </div>
-
-          <div class="contact-links reveal reveal-delay-1">
-            <a href="mailto:calebgawthroupe@gmail.com" class="contact-link">
-              <i class="fa-solid fa-envelope"></i> Email
-            </a>
-            <a
-              href="https://www.linkedin.com/in/caleb-gawthroupe-34589728a/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contact-link"
-            >
-              <i class="fa-brands fa-linkedin-in"></i> LinkedIn
-            </a>
-            <a
-              href="https://github.com/Caleb-Gawthroupe"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contact-link"
-            >
-              <i class="fa-brands fa-github"></i> GitHub
-            </a>
-          </div>
-
-          <p class="footer-line reveal reveal-delay-2">
-            Designed & built by Caleb Gawthroupe © 2026
-          </p>
+      <div class="bottom-bar">
+        <div class="academic-year">UoFT CS / ACADEMIC YEAR 2026</div>
+        <div class="controls">
+          <span
+            >Hold <i class="fa-solid fa-circle-xmark"></i> to View Details</span
+          >
+          <span><i class="fa-solid fa-circle-notch"></i> to Back</span>
         </div>
-      </section>
+      </div>
     </div>
-
-    <!-- App Script -->
     <script src="script.js"></script>
   </body>
 </html>

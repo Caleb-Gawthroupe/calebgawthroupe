@@ -1,230 +1,184 @@
-/* ============================================
-   Three.js Abstract Tech Scene
-   ============================================
-   - Smooth, elegant particle wave
-   - Soft blue/slate colors
-   - Mouse parallax + scroll-driven camera
-   ============================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  const menuBtns = document.querySelectorAll('.menu-btn[data-target]');
+  const panels = document.querySelectorAll('.display-panel');
+  const gameContainer = document.querySelector('.game-container');
+  let topZIndex = 100;
 
-(function () {
-  'use strict';
+  menuBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-target');
+      
+      // Update active state on buttons
+      menuBtns.forEach(b => b.classList.remove('active-menu'));
+      btn.classList.add('active-menu');
 
-  /* ------------------------------------------
-     Three.js Setup
-     ------------------------------------------ */
-  const canvas = document.getElementById('three-canvas');
-  const renderer = new THREE.WebGLRenderer({
-    canvas,
-    antialias: window.innerWidth > 768,
-    alpha: true,
-  });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setClearColor(0x000000, 0);
-
-  const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0xf8fafc, 0.008);
-
-  const camera = new THREE.PerspectiveCamera(
-    55,
-    window.innerWidth / window.innerHeight,
-    1,
-    1000
-  );
-  camera.position.set(0, 15, 60);
-  camera.lookAt(0, 0, 0);
-
-  /* ------------------------------------------
-     Particle Wave
-     ------------------------------------------ */
-  const particleCount = 4000;
-  const geometry = new THREE.BufferGeometry();
-  const positions = new Float32Array(particleCount * 3);
-  const scales = new Float32Array(particleCount);
-  
-  const width = 140;
-  const depth = 140;
-
-  for (let i = 0; i < particleCount; i++) {
-    const x = (Math.random() - 0.5) * width;
-    const z = (Math.random() - 0.5) * depth;
-    const y = 0; // animated in shader
-
-    positions[i * 3] = x;
-    positions[i * 3 + 1] = y;
-    positions[i * 3 + 2] = z;
-
-    scales[i] = Math.random() * 2.0;
-  }
-
-  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  geometry.setAttribute('scale', new THREE.BufferAttribute(scales, 1));
-
-  const material = new THREE.ShaderMaterial({
-    uniforms: {
-      color: { value: new THREE.Color(0x2563eb) },
-      time: { value: 0 }
-    },
-    vertexShader: `
-      attribute float scale;
-      uniform float time;
-      varying vec2 vUv;
-      void main() {
-        vec3 p = position;
-        p.y = sin(p.x * 0.1 + time * 0.5) * 3.0 + cos(p.z * 0.1 + time * 0.3) * 3.0;
-        vec4 mvPosition = modelViewMatrix * vec4(p, 1.0);
-        gl_PointSize = scale * (20.0 / -mvPosition.z);
-        gl_Position = projectionMatrix * mvPosition;
+      // Hide all panels
+      panels.forEach(panel => panel.classList.remove('active'));
+      
+      // Show targeted panel
+      const targetPanel = document.getElementById(`panel-${targetId}`);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
       }
-    `,
-    fragmentShader: `
-      uniform vec3 color;
-      void main() {
-        float d = distance(gl_PointCoord, vec2(0.5));
-        if (d > 0.5) discard;
-        gl_FragColor = vec4(color, 0.6 - (d * 1.0));
-      }
-    `,
-    transparent: true,
-    depthWrite: false,
-    blending: THREE.NormalBlending
+
+      // Hide details panels on tab switch
+      document.querySelectorAll('.dynamic-popup').forEach(popup => {
+        popup.classList.remove('active');
+        setTimeout(() => popup.remove(), 250);
+      });
+    });
   });
 
-  const particles = new THREE.Points(geometry, material);
-  particles.position.y = -10;
-  scene.add(particles);
+  // Handle skills sub-tab switching
+  const skillsTabBtns = document.querySelectorAll('.skills-tab-btn');
+  const skillsContentGroups = document.querySelectorAll('.skills-content-group');
 
-  /* ------------------------------------------
-     Mouse Tracking
-     ------------------------------------------ */
-  const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
+  skillsTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetGroup = btn.getAttribute('data-skill-target');
+      
+      // Update active state on sub-tab buttons
+      skillsTabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-  document.addEventListener('mousemove', (e) => {
-    mouse.targetX = (e.clientX / window.innerWidth) * 2 - 1;
-    mouse.targetY = -(e.clientY / window.innerHeight) * 2 + 1;
-  });
-
-  /* ------------------------------------------
-     Scroll Tracking
-     ------------------------------------------ */
-  let scrollProgress = 0;
-  const totalScrollHeight = () =>
-    document.documentElement.scrollHeight - window.innerHeight;
-
-  window.addEventListener('scroll', () => {
-    const total = totalScrollHeight();
-    scrollProgress = total > 0 ? window.scrollY / total : 0;
-  });
-
-  /* ------------------------------------------
-     Animation Loop
-     ------------------------------------------ */
-  const clock = new THREE.Clock();
-
-  function animate() {
-    requestAnimationFrame(animate);
-
-    const elapsed = clock.getElapsedTime();
-    
-    material.uniforms.time.value = elapsed;
-
-    mouse.x += (mouse.targetX - mouse.x) * 0.04;
-    mouse.y += (mouse.targetY - mouse.y) * 0.04;
-
-    camera.position.x = mouse.x * 8;
-    camera.position.y = 15 + mouse.y * 3;
-
-    camera.position.z = 60 - scrollProgress * 20;
-    camera.position.y = 15 - scrollProgress * 5;
-    camera.lookAt(0, -10 + scrollProgress * 5, 0);
-
-    renderer.render(scene, camera);
-  }
-
-  animate();
-
-  /* ------------------------------------------
-     Resize Handler
-     ------------------------------------------ */
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  });
-
-  /* ------------------------------------------
-     Intersection Observer — Scroll Reveals
-     ------------------------------------------ */
-  const revealElements = document.querySelectorAll('.reveal');
-
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+      // Hide all content groups and show the target group
+      skillsContentGroups.forEach(group => {
+        if (group.id === `skills-${targetGroup}`) {
+          group.style.display = 'flex';
+        } else {
+          group.style.display = 'none';
         }
       });
-    },
-    {
-      threshold: 0.15,
-      rootMargin: '0px 0px -60px 0px',
-    }
-  );
-
-  revealElements.forEach((el) => revealObserver.observe(el));
-
-  /* ------------------------------------------
-     Navbar Scroll Effect
-     ------------------------------------------ */
-  const navbar = document.getElementById('navbar');
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
+    });
   });
 
-  /* ------------------------------------------
-     Smooth Scroll for Nav Links
-     ------------------------------------------ */
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetEl = document.querySelector(targetId);
-      if (targetEl) {
-        targetEl.scrollIntoView({ behavior: 'smooth' });
-        // Close mobile menu if open
-        const navLinks = document.getElementById('nav-links');
-        navLinks.classList.remove('open');
+  // Handle clicking on cards to show details
+  document.querySelectorAll('.clickable-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const popupId = card.getAttribute('data-popup-id');
+      const template = card.querySelector('.card-detail-template');
+      
+      if (popupId) {
+        // If a popup for this item is already open, bring it to front and flash highlight it
+        const existing = document.querySelector(`.dynamic-popup[data-popup-id="${popupId}"]`);
+        if (existing) {
+          existing.style.zIndex = ++topZIndex;
+          existing.classList.remove('pulse-highlight');
+          void existing.offsetWidth; // trigger reflow
+          existing.classList.add('pulse-highlight');
+          return;
+        }
+      }
+      
+      if (template) {
+        createPopup(template.innerHTML, popupId);
       }
     });
   });
 
-  /* ------------------------------------------
-     Mobile Menu Toggle
-     ------------------------------------------ */
-  const menuToggle = document.getElementById('menu-toggle');
-  const navLinks = document.getElementById('nav-links');
-
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    const icon = menuToggle.querySelector('i');
-    if (navLinks.classList.contains('open')) {
-      icon.className = 'fa-solid fa-xmark';
-    } else {
-      icon.className = 'fa-solid fa-bars';
+  // Dynamic Popup Creation & Dragging Logic
+  function createPopup(contentHtml, popupId) {
+    const popup = document.createElement('div');
+    popup.className = 'details-panel dynamic-popup';
+    if (popupId) {
+      popup.setAttribute('data-popup-id', popupId);
     }
-  });
+    popup.style.zIndex = ++topZIndex;
 
-  // Close menu on outside click
-  document.addEventListener('click', (e) => {
-    if (!navbar.contains(e.target) && navLinks.classList.contains('open')) {
-      navLinks.classList.remove('open');
-      menuToggle.querySelector('i').className = 'fa-solid fa-bars';
-    }
-  });
-})();
+    // Set initial position to center of viewport with small random offset
+    const offsetRange = 60; // +/- 30px offset
+    const offsetX = (Math.random() - 0.5) * offsetRange;
+    const offsetY = (Math.random() - 0.5) * offsetRange;
+    
+    popup.style.position = 'absolute';
+    popup.style.left = `calc(50% + ${offsetX}px)`;
+    popup.style.top = `calc(50% + ${offsetY}px)`;
+    
+    // Add slightly randomized rotation for retro paper aesthetic
+    const randomRotate = (Math.random() - 0.5) * 6; // -3deg to 3deg
+    popup.style.transform = `translate(-50%, -50%) rotate(${randomRotate}deg)`;
+
+    // HTML Content
+    popup.innerHTML = `
+      <div class="popup-tape"></div>
+      <button class="close-details-btn"><i class="fa-solid fa-xmark"></i></button>
+      <div class="details-content">
+        ${contentHtml}
+      </div>
+    `;
+
+    // Make active (triggers CSS slide/fade transition)
+    setTimeout(() => {
+      popup.classList.add('active');
+    }, 10);
+
+    // Bring to front on click/mousedown
+    popup.addEventListener('mousedown', () => {
+      popup.style.zIndex = ++topZIndex;
+    });
+
+    // Close button handler
+    const closeBtn = popup.querySelector('.close-details-btn');
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      popup.classList.remove('active');
+      setTimeout(() => {
+        popup.remove();
+      }, 250);
+    });
+
+    // Drag-and-Drop functionality using the tape handle
+    const tape = popup.querySelector('.popup-tape');
+    let isDragging = false;
+    let startX, startY;
+    let initLeft, initTop;
+
+    tape.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      popup.style.zIndex = ++topZIndex;
+      popup.classList.add('dragging'); // disable CSS transition during active dragging
+      
+      const rect = popup.getBoundingClientRect();
+      const parentRect = gameContainer.getBoundingClientRect();
+      
+      initLeft = rect.left - parentRect.left;
+      initTop = rect.top - parentRect.top;
+      
+      popup.style.left = `${initLeft}px`;
+      popup.style.top = `${initTop}px`;
+      popup.style.transform = `rotate(${randomRotate}deg)`; // remove translate offset
+
+      startX = e.clientX;
+      startY = e.clientY;
+      
+      tape.style.cursor = 'grabbing';
+      e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      
+      popup.style.left = `${initLeft + dx}px`;
+      popup.style.top = `${initTop + dy}px`;
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+        popup.classList.remove('dragging');
+        tape.style.cursor = 'grab';
+      }
+    });
+
+    gameContainer.appendChild(popup);
+  }
+
+  // Set initial active state
+  const homeBtn = document.querySelector('.menu-btn[data-target="skills"]');
+  if (homeBtn) {
+    homeBtn.classList.add('active-menu');
+  }
+});
